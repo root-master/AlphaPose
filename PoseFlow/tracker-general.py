@@ -120,7 +120,7 @@ if __name__ == '__main__':
 
         with open(notrack_json) as f:
             results = json.load(f)
-            for i in xrange(len(results)):
+            for i in range(len(results)):
                 imgpath = results[i]['image_id']
                 if last_image_name != imgpath:
                     results_forvis[imgpath] = []
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     max_pid_id = 0
     frame_list = [img_name[:-4] for img_name in list(track.keys())]
     frame_list.sort(key=int)
-    
+
     print("Start pose tracking...\n")
     for idx, frame_name in enumerate(tqdm(frame_list[:-1])):
         frame_new_pids = []
