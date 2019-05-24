@@ -71,7 +71,7 @@ def display_pose(imgdir, visdir, tracked, cmap):
         extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
         if not os.path.exists(visdir): 
             os.mkdir(visdir)
-        fig.savefig(os.path.join(visdir,imgname.split()[0]+".png"), pad_inches = 0.0, bbox_inches=extent, dpi=13)
+        fig.savefig(os.path.join(visdir,imgname.split()[0]), pad_inches = 0.0, bbox_inches=extent, dpi=13)
         plt.close()
 
 
@@ -157,9 +157,9 @@ if __name__ == '__main__':
 
     # tracking process
     max_pid_id = 0
-    frame_list = []
     img_ext = '.jpg'
     frame_list = [img[:-4] for img in list(track.keys())]
+    # frame_list = []
     # for image_name in list(track.keys()):
     #     frame_list.append(img_name[:-4])
         # img_ext = img_name[-4:]
