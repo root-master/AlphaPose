@@ -157,8 +157,14 @@ if __name__ == '__main__':
 
     # tracking process
     max_pid_id = 0
-    frame_list = [img_name[:-4] for img_name in list(track.keys())]
+    frame_list = []
+    img_ext = '.jpg'
+    frame_list = [img[:-4] for img in list(track.keys())]
+    # for image_name in list(track.keys()):
+    #     frame_list.append(img_name[:-4])
+        # img_ext = img_name[-4:]
     frame_list.sort(key=int)
+    frame_list = [img+img_ext for img in frame_list]
 
     print("Start pose tracking...\n")
     for idx, frame_name in enumerate(tqdm(frame_list[:-1])):
