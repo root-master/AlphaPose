@@ -140,7 +140,10 @@ if __name__ == '__main__':
     print("Start loading json file...\n")
     with open(notrack_json,'r') as f:
         notrack = json.load(f)
-        for img_name in tqdm(sorted(notrack.keys())):
+        image_list_int = [img_name[:-4] for img_name in list(notrack.keys())]
+        image_list_int.sort(key=int)
+        for img_name_int in tqdm(image_list_int):
+            img_name = img_name_int + '.jpg'
             track[img_name] = {'num_boxes':len(notrack[img_name])}
             for bid in range(len(notrack[img_name])):
                 track[img_name][bid+1] = {}
@@ -154,8 +157,9 @@ if __name__ == '__main__':
 
     # tracking process
     max_pid_id = 0
-    frame_list = sorted(list(track.keys()))
-
+    frame_list = [img_name[:-4] for img_name in list(track.keys())]
+    frame_list.sort(key=int)
+    
     print("Start pose tracking...\n")
     for idx, frame_name in enumerate(tqdm(frame_list[:-1])):
         frame_new_pids = []
